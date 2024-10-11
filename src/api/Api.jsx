@@ -2,6 +2,7 @@ import React from 'react';
 import UserPost from './endpoints/UserPost';
 import TokenPost from './endpoints/TokenPost';
 import PostPost from './endpoints/PostPost';
+import GetPost from './endpoints/GetPost';
 
 const Api = () => {
   return (<div>
@@ -11,6 +12,8 @@ const Api = () => {
     <TokenPost />
     <h2>Post create POST POST</h2>
     <PostPost />
+    <h2>Get all posts from server</h2>
+    <GetPost />
   </div>)
 }
 
