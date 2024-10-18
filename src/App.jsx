@@ -9,20 +9,24 @@ import Footer from './Components/Footer';
 import Home from './Components/Home';
 import Login from './Components/Login/Login';
 import Page404 from './Components/Page404';
-
-
+import { UserStorage } from './UserContext';
+import User from './Components/User/User'
+import ProtectedRoute from './Components/Helper/ProtectedRoute';
 
 const App = () => {
   return (
     <div>
       <BrowserRouter>
-        <Header />
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/login/*' element={<Login />} />
-          <Route path="/*" element={<Page404 />} />
-        </Routes>
-        <Footer />
+        <UserStorage>
+          <Header />
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/login/*' element={<Login />} />
+            <Route path='/account/*' element={<ProtectedRoute><User /></ProtectedRoute>} />
+            <Route path="/*" element={<Page404 />} />
+          </Routes>
+          <Footer />
+        </UserStorage>
       </BrowserRouter>
     </div>
   )

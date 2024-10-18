@@ -7,7 +7,11 @@ const validations = {
   }, 
   password: {
     regex: /\d{6,10}/, 
-    message: 'Password must have at least 6 digits'
+    message: 'Password must have at least 6 digits.'
+  }, 
+  username: {
+    regex: /\w{2,}/, 
+    message: 'Username must have at least 2 characters.'
   }
 }
 
@@ -30,6 +34,13 @@ const useForm = (type) => {
     }
   }
 
+  function handleFileChange({target}) {
+    if (error) validate(target.files[0])
+    if (target.files && target.files[0]) {
+      setValue(target.files[0])
+    }
+  }
+
   function onChange({target}) {
     if (error) validate(target.value);
     setValue(target.value);
@@ -40,6 +51,7 @@ const useForm = (type) => {
     setValue, 
     onChange,
     error, 
+    handleFileChange,
     validate: () => validate(value), 
     onBlur: () => validate(value)
   }

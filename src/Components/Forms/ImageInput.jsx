@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Input.module.css';
 
-const Input = ({ label, type, name, value, onChange, error, onBlur }) => {
+const ImageInput = ({ label, type, name, error, handleFileChange }) => {
 
   return (
     <div className={styles.wrapper}>
@@ -11,9 +11,9 @@ const Input = ({ label, type, name, value, onChange, error, onBlur }) => {
       type={type} 
       id={name} 
       name={name} 
-      onChange={onChange} 
-      value={value}
-      onBlur={onBlur} />
+      accept="image/*"
+      onChange={handleFileChange} 
+      />
       
 
       { error && <p className={styles.error}>{error}</p> }
@@ -21,4 +21,4 @@ const Input = ({ label, type, name, value, onChange, error, onBlur }) => {
   )
 }
 
-export default Input;
+export default ImageInput;

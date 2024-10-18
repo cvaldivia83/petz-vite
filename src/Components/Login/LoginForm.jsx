@@ -2,68 +2,52 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Input from '../Forms/Input';
 import Button from '../Forms/Button';
-import useForm from '../../Hooks/UseForm';
+import useForm from '../../Hooks/useForm';
+import Error from '../Helper/Error';
+import styles from './LoginForm.module.css';
+import stylesBtn from '../Forms/Button.module.css'
 
-import { LOG_IN } from '../../api';
+import { UserContext } from '../../UserContext';
 
 const LoginForm = () => {
+  
   const email = useForm('email');
   const password = useForm('password');
-
-  React.useEffect(() => {
-    const prevToken = window.localStorage.getItem('token');
-    if (prevToken) {
-      getUser({prevToken, id: window.localStorage.getItem('id'), username: window.localStorage.getItem('username'), email: window.localStorage.getItem('email')});
-    }
-  }, [])
- 
-  async function getUser(user) {
-    const {token, id, email, username} = user;
-    console.log(user);
-    
-  }
+  const { userLogin, error, loading } = React.useContext(UserContext);
+  
 
   async function handleSubmit(event) {
     event.preventDefault();
 
+    const formData = new FormData();
+    formData.append('user[email]', email.value);
+    formData.append('user[password]', password.value);
+
     if (email.validate() && password.validate()) {
-
-      const formData = new FormData();
-      formData.append('user[email]', email.value);
-      formData.append('user[password]', password.value);
-
-      const {url, options} = LOG_IN(formData);
-
-      const response = await fetch(url, options);
-      const token = response.headers.get('authorization');
-      window.localStorage.setItem('token', token)
-      const loggedInUser = {token: token}
-      const data = await response.json();
-      
-      loggedInUser.id = data.status.data.user.id
-      window.localStorage.setItem('id', data.status.data.user.id)
-      loggedInUser.email = data.status.data.user.email
-      window.localStorage.setItem('email', data.status.data.user.email)
-      loggedInUser.username = data.status.data.user.username
-      getUser(loggedInUser)
-      window.localStorage.setItem('username', data.status.data.user.username)
+      userLogin(formData);
     }
    
   }
 
   return (
-    <section>
-      <h1>Log In</h1>
+    <section className='animeLeft'>
+      <h1 className='title'>Log In</h1>
 
-      <form action="" onSubmit={handleSubmit}>
+      <form className={styles.form} onSubmit={handleSubmit}>
 
         <Input label="E-mail" type="text" name='email' {...email} />
         <Input label="Password" type="password" name='password' {...password} />
+        { loading ? <Button disabled>Loading...</Button> : <Button>Log In</Button>}
+        <Error error={error} />
         
-        <Button>Log In</Button>
       </form>
-
-      <Link to="/login/sign_up">Sign Up</Link>
+      <Link className={styles.lost} to="/login/lost_password">Lost Password?</Link>
+      
+      <div className={styles.register}>
+        <h2 className={styles.subtitle}>Sign Up</h2>
+        <p>Don't have an account yet? Register on our website</p>
+        <Link className={stylesBtn.button} to="/login/sign_up">Sign Up</Link>
+      </div>
     </section>
   )
 }
