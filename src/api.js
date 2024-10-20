@@ -81,3 +81,31 @@ export function POSTS_GET({number, user, token}) {
     }
   }
 }
+
+// Post show
+export function POST_GET(id, token) {
+  return {
+    url: `${API_URL}/api/v1/posts/${id}`, 
+    options: {
+      method: 'GET',
+      cache: 'no-store', 
+      headers: {
+        authorization: token
+      }
+    }
+  }
+}
+
+// Comment post
+export function COMMENT_POST(post_id, formData, token) {
+  return {
+    url: `${API_URL}/api/v1/posts/${post_id}/comments`,
+    options: {
+      method: 'POST',
+      headers: {
+        authorization: token
+      },
+      body: formData
+    }
+  }
+}

@@ -4,8 +4,9 @@ import { POSTS_GET } from '../../api';
 import useFetch from '../../Hooks/useFetch';
 import Error from '../Helper/Error';
 import Loading from '../Helper/Loading';
+import styles from './FeedPhotos.module.css';
 
-const FeedPhotos = () => {
+const FeedPhotos = ({setModalPost}) => {
 
   const {data, loading, error, request} = useFetch();
 
@@ -25,8 +26,8 @@ const FeedPhotos = () => {
   if (loading) return <Loading />
   if (data)
     return (
-      <div>
-        {data.map((post) => <FeedPostsItem key={post.id} post={post} />)}
+      <div className={`${styles.feed} animeLeft`}>
+        {data.map((post) => <FeedPostsItem key={post.id} post={post} setModalPost={setModalPost} />)}
       </div>
     )
 
