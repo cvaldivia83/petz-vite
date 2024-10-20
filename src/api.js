@@ -109,3 +109,15 @@ export function COMMENT_POST(post_id, formData, token) {
     }
   }
 }
+
+export function POST_DELETE(post_id, token) {
+  return {
+    url: `${API_URL}/api/v1/posts/${post_id}`,
+    options: {
+      method: 'DELETE',
+      headers: {
+        authorization: token
+      }
+    }
+  }
+}

@@ -2,9 +2,13 @@ import React from 'react'
 import styles from './PostContent.module.css';
 import { Link } from 'react-router-dom';
 import PostComments from './PostComments';
+import PostDelete from './PostDelete';
+import { UserContext } from '../../UserContext';
 
 const PostContent = ({ data }) => {
   const { id, description, username, user_id, photo_url, comments } = data;
+
+  const user = React.useContext(UserContext);
  
   
   return (
@@ -16,7 +20,7 @@ const PostContent = ({ data }) => {
 
         <div>
           <p className={styles.author}>
-            <Link to={`/profile/${user_id}`}>@{username}</Link>
+            {user.data && user.data.username === username ? <PostDelete id={id} /> : <Link to={`/profile/${user_id}`}>@{username}</Link>}
           </p>
           <h1 className='title'>
             <Link to={photo_url}>@{username}</Link>
