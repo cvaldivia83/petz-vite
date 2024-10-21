@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import PostComments from './PostComments';
 import PostDelete from './PostDelete';
 import { UserContext } from '../../UserContext';
+import Image from '../Helper/Image';
 
 const PostContent = ({ data }) => {
   const { id, description, username, user_id, photo_url, comments } = data;
@@ -14,7 +15,7 @@ const PostContent = ({ data }) => {
   return (
     <div className={styles.post}>
       <div className={styles.img}>
-        <img src={photo_url} alt={description} />
+        <Image alt={description} src={photo_url} />
       </div>
       <div className={styles.details}>
 

@@ -40,6 +40,9 @@
 .postPhoto {
   background-size: cover;
   border-radius: 2px;
+}
+
+.post > div {
   grid-area: 1/1;
 }
 

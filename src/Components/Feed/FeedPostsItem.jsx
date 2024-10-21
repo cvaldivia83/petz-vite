@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './FeedPostsItem.module.css';
+import Image from '../Helper/Image';
 
 const FeedPostsItem = ({ post, setModalPost }) => {
   
@@ -9,7 +10,7 @@ const FeedPostsItem = ({ post, setModalPost }) => {
 
   return (
     <div className={styles.post} onClick={handleClick}>
-      <img className={styles.postPhoto} src={post.photo_url} alt={post.description} />
+      <Image src={post.photo_url} alt={post.description} />
       
       <div className={styles.postCaption}>
         <h2 className={styles.postUsername}>{post.username}</h2>
