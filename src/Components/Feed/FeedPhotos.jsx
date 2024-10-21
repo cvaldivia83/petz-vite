@@ -6,7 +6,7 @@ import Error from '../Helper/Error';
 import Loading from '../Helper/Loading';
 import styles from './FeedPhotos.module.css';
 
-const FeedPhotos = ({setModalPost}) => {
+const FeedPhotos = ({user, setModalPost}) => {
 
   const {data, loading, error, request} = useFetch();
 
@@ -14,13 +14,13 @@ const FeedPhotos = ({setModalPost}) => {
 
     async function fetchPosts() {
       const token = window.localStorage.getItem('token');
-      const {url, options} = POSTS_GET({user: 4, number: 2, token: token})
+      const {url, options} = POSTS_GET({user: user, number: 6, token: token})
       const {response, data} = await request(url, options)
     
     }
 
     fetchPosts();
-  }, [request])
+  }, [request, user])
 
   if (error) return <Error error={error} />
   if (loading) return <Loading />
