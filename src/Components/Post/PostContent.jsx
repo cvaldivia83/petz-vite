@@ -21,7 +21,8 @@ const PostContent = ({ data }) => {
 
         <div>
           <p className={styles.author}>
-            {user.data && user.data.username === username ? <PostDelete id={id} /> : <Link to={`/profile/${user_id}`}>@{username}</Link>}
+            {user.data && user.data.username === username ? <PostDelete id={id} /> : <Link to={`/users/${user_id}`}>@{username}</Link>}
+            <span className={styles.preview}></span>
           </p>
           <h1 className='title'>
             <Link to={photo_url}>@{username}</Link>

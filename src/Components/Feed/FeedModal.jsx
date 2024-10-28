@@ -23,7 +23,7 @@ const FeedModal = ({post, setModalPost}) => {
 
   return (
     <div className={styles.modal} onClick={handleOutsideClick}>
-      FeedModal
+      
       { error && <Error error={error} />}
       { loading && <Loading /> }
       { data && <PostContent data={data} /> }

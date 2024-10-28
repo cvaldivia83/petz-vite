@@ -1,11 +1,12 @@
 .post {
-  width: 85%;
-  max-width: 100%;
-  margin: 0 auto;
-  padding: 0.4rem 0.2rem;
   display: grid;
+  border-radius: 0.2rem;
   overflow: hidden;
   cursor: pointer;
+  /* width: 85%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0.4rem 0.2rem; */
 }
 
 .post:nth-child(2) {
@@ -13,11 +14,16 @@
   grid-row: span 2;
 }
 
-.preview {
+.post img {
   grid-area: 1/1;
+  background-size: cover
+}
+
+.preview {
   background: rgba(0, 0, 0, 0.3);
   color: white;
   font-size: 1rem;
+  grid-area: 1/1;
   text-align: center;
   align-items: center;
   justify-content: center;
@@ -37,10 +43,10 @@
   display: flex;
 }
 
-.postPhoto {
+/* .postPhoto {
   background-size: cover;
   border-radius: 2px;
-}
+} */
 
 .post > div {
   grid-area: 1/1;

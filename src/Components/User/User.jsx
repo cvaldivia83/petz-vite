@@ -5,6 +5,7 @@ import Feed from '../Feed/Feed';
 import UserPostPost from './UserPostPost';
 import UserStats from './UserStats';
 import { UserContext } from '../../UserContext';
+import Page404 from '../Page404';
 
 const User = () => {
   const {data} = React.useContext(UserContext)
@@ -15,7 +16,8 @@ const User = () => {
       <Routes>
         <Route path="/" element={<Feed user={data.id} />} />
         <Route path="post" element={<UserPostPost />} />
-        <Route path="stats" element={<UserStats />} />  
+        <Route path="stats" element={<UserStats />} />
+        <Route path="/*" element={<Page404 />} />  
       </Routes>
     </section>
   )

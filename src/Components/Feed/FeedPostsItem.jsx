@@ -3,18 +3,22 @@ import styles from './FeedPostsItem.module.css';
 import Image from '../Helper/Image';
 
 const FeedPostsItem = ({ post, setModalPost }) => {
+
+  React.useEffect(() => {
+    console.log('Im changing right now')
+  }, [post])
   
   function handleClick(event) {
     setModalPost(post);
   }
 
   return (
-    <div className={styles.post} onClick={handleClick}>
+    <li className={styles.post} onClick={handleClick}>
       <Image src={post.photo_url} alt={post.description} />
       
       
       <span className={styles.preview}></span>   
-    </div>
+    </li>
   )
 }
 

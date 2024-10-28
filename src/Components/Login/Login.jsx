@@ -6,6 +6,7 @@ import LostPassword from './LostPassword';
 import ResetPassword from './ResetPassword';
 import { UserContext } from '../../UserContext';
 import styles from './Login.module.css';
+import Page404 from '../Page404';
 
 
 const Login = () => {
@@ -21,6 +22,7 @@ const Login = () => {
           <Route path="sign_up" element={<SignUpForm />} />
           <Route path="lost_password" element={<LostPassword />} />
           <Route path="reset_password" element={<ResetPassword /> } />
+          <Route path="/*" element={<Page404 />} />
         </Routes>
       </div>
     </section>
