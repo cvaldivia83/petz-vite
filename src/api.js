@@ -70,8 +70,17 @@ export function POST_POST(formData, token) {
 // Post Index
 
 export function POSTS_GET({number, user, token}) {
+
+  let queryString;
+
+  if (user === 0) {
+    queryString = `/api/v1/posts/?posts_number=${number}`;
+  } else {
+    queryString = `/api/v1/posts/?user_id=${user}&posts_number=${number}`;
+  }
+
   return {
-    url: API_URL + `/api/v1/posts/?user_id=${user}&posts_number=${number}`,
+    url: API_URL + queryString,
     options: {
       method: 'GET',
       cache: 'no-store',
@@ -115,6 +124,29 @@ export function POST_DELETE(post_id, token) {
     url: `${API_URL}/api/v1/posts/${post_id}`,
     options: {
       method: 'DELETE',
+      headers: {
+        authorization: token
+      }
+    }
+  }
+}
+
+// User profile
+
+export function USER_PROFILE(id) {
+  return {
+    url: `${API_URL}/api/v1/users/${id}`,
+    options: {
+      method: 'GET',
+    }
+  }
+}
+
+export function USER_STATS(token) {
+  return {
+    url: `${API_URL}/api/v1/stats`,
+    options: {
+      method: 'GET', 
       headers: {
         authorization: token
       }
