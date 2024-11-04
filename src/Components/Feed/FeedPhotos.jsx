@@ -20,19 +20,20 @@ const FeedPhotos = ({ total, user, setModalPost }) => {
     async function fetchPosts() {
       const token = window.localStorage.getItem('token');
       const {url, options} = POSTS_GET({user: login ? user : 0, number: total, token: token})
+
+      console.log(url)
       await request(url, options)
       
       setPosts(data)
     }
 
     fetchPosts();
-    console.log(user)
-    console.log(posts)
-  }, [request, user, total])
+
+  }, [request, user])
 
 
-  if (error) return <Error error={error} />
-  if (loading) return <Loading />
+  if (error) return (<Error error={error} />)
+  if (loading) return (<Loading />)
   if (data)
     return (
       <ul className={`${styles.feed} animeLeft`}>

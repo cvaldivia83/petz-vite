@@ -1,11 +1,11 @@
 .post {
   margin: auto;
-  height: 31rem;
+  height: 36rem;
   /* height: 36rem; */
   border-radius: 0.2rem;
   background: #fff;
   display: grid;
-  grid-template-columns: 33rem 20rem;
+  grid-template-columns: 36rem 29rem;
   /* grid-template-columns: 36rem 20rem */
   grid-template-rows: auto 1fr auto;
   overflow: hidden;

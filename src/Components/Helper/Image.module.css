@@ -8,6 +8,10 @@
   grid-area: 1/1;
   opacity: 0;
   transition: 0.2s;
+  /* chatgpt suggestions */
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
 }
 
 .skeleton {
