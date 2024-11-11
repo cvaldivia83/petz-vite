@@ -11,7 +11,7 @@ const UserStatsGraphs = ({ data }) => {
 
     const graphData = [{ x: 'posts', y: data.posts_count}, { x: 'comments', y: data.comments_count }]
 
-    console.log(graphData)
+   
     setPostsCount(data.posts_count);
     setCommentsCount(data.comments_count);
     setGraph(graphData);

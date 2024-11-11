@@ -21,7 +21,7 @@ const FeedPhotos = ({ total, user, setModalPost }) => {
       const token = window.localStorage.getItem('token');
       const {url, options} = POSTS_GET({user: login ? user : 0, number: total, token: token})
 
-      console.log(url)
+      // console.log(url)
       await request(url, options)
       
       setPosts(data)

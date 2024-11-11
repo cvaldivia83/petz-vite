@@ -33,9 +33,9 @@ const TokenPost = () => {
       })
     })
     .then(({ data, token }) => {
-      console.log(token);
+      // console.log(token);
       setToken(token);
-      console.log(data.status.message);
+      // console.log(data.status.message);
     })
   }
 

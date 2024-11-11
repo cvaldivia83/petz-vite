@@ -5,7 +5,7 @@ import Image from '../Helper/Image';
 const FeedPostsItem = ({ post, setModalPost }) => {
 
   React.useEffect(() => {
-    console.log('Im changing right now')
+    
   }, [post])
   
   function handleClick(event) {
