@@ -1,4 +1,4 @@
-export const API_URL='http://localhost:3001'
+export const API_URL='https://petz-rails-cacv-e49f4458ae65.herokuapp.com'
 
 
 // original TOKEN_POST
